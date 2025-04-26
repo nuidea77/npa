@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'edit_info' => 'Edit Your Information',
+    'upload_avatar' => 'Upload Avatar',
+    'current_avatar' => 'Current Avatar',
+    'keep_avatar' => 'Leave empty to keep the current avatar.',
+    'firstname' => 'First Name',
+    'lastname' => 'Last Name',
+    'gender' => 'Gender',
+    'male' => 'Male',
+    'female' => 'Female',
+    'email' => 'Email',
+    'phone' => 'Phone',
+    'position' => 'Position',
+    'position_1' => 'Director',
+    'position_2' => 'Senior Specialist',
+    'position_3' => 'Specialist',
+    'position_4' => 'Ranger',
+    'position_5' => 'Assistant Ranger',
+    'new_password' => 'New Password (Optional)',
+    'confirm_password' => 'Confirm New Password',
+    'update_info' => 'Update Information',
+    'cancel' => 'Cancel',
+    'dashboard' => 'Dashboard',
+];

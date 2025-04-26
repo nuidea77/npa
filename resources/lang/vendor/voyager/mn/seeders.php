@@ -1,0 +1,93 @@
+<?php
+
+return [
+    'data_rows'  => [
+        'author'           => 'Зохиогч',
+        'avatar'           => 'Аватар',
+        'body'             => 'Агуулга',
+        'category'         => 'Ангилал',
+        'created_at'       => 'Үүсгэсэн огноо',
+        'display_name'     => 'Дисплей нэр',
+        'email'            => 'Имэйл',
+        'excerpt'          => 'Тойм',
+        'featured'         => 'Онцлох',
+        'id'               => 'ID',
+        'meta_description' => 'Meta Тайлбар',
+        'meta_keywords'    => 'Meta Түлхүүр үгс',
+        'name'             => 'Нэр',
+        'order'            => 'Дэс дугаар',
+        'page_image'       => 'Хуудасны зураг',
+        'parent'           => 'Эцэг',
+        'password'         => 'Нууц үг',
+        'post_image'       => 'Мэдээний зураг',
+        'remember_token'   => 'Токен санах',
+        'role'             => 'Үүрэг',
+        'seo_title'        => 'SEO Гарчиг',
+        'slug'             => 'Slug',
+        'status'           => 'Төлөв',
+        'title'            => 'Гарчиг',
+        'updated_at'       => 'Шинэчилсэн огноо',
+    ],
+    'data_types' => [
+        'category' => [
+            'singular' => 'Ангилал',
+            'plural'   => 'Ангилалууд',
+        ],
+        'menu'     => [
+            'singular' => 'Цэс',
+            'plural'   => 'Цэсүүд',
+        ],
+        'page'     => [
+            'singular' => 'Хуудас',
+            'plural'   => 'Хуудаснууд',
+        ],
+        'post'     => [
+            'singular' => 'Мэдээ',
+            'plural'   => 'Мэдээллүүд',
+        ],
+        'role'     => [
+            'singular' => 'Үүрэг',
+            'plural'   => 'Үүргүүд',
+        ],
+        'user'     => [
+            'singular' => 'Хэрэглэгч',
+            'plural'   => 'Хэрэглэгчид',
+        ],
+    ],
+    'menu_items' => [
+        'bread'        => 'BREAD',
+        'categories'   => 'Ангилалууд',
+        'compass'      => 'Тамхи',
+        'dashboard'    => 'Самбар',
+        'database'     => 'Өгөгдлийн сан',
+        'media'        => 'Медиа',
+        'menu_builder' => 'Цэсийн бүтээгч',
+        'pages'        => 'Хуудаснууд',
+        'posts'        => 'Мэдээллүүд',
+        'roles'        => 'Үүргүүд',
+        'settings'     => 'Тохиргоо',
+        'tools'        => 'Тулгуур',
+        'users'        => 'Хэрэглэгчид',
+    ],
+    'roles'      => [
+        'admin' => 'Админ',
+        'user'  => 'Энгийн хэрэглэгч',
+    ],
+    'settings'   => [
+        'admin' => [
+            'background_image'           => 'Админ фон зураг',
+            'description'                => 'Админ тайлбар',
+            'description_value'          => 'Тавтай морилно уу',
+            'google_analytics_client_id' => 'Google Analytics Client ID (админ самбарын хэрэглэгчийн статистик)',
+            'icon_image'                 => 'Админ икон зураг',
+            'loader'                     => 'Админ ачаалах',
+            'title'                      => 'Админ гарчиг',
+        ],
+        'site'  => [
+            'description'                  => 'Вебсайтын тайлбар',
+            'google_analytics_tracking_id' => 'Google Analytics Tracking ID',
+            'logo'                         => 'Вебсайтын лого',
+            'title'                        => 'Вебсайтын гарчиг',
+        ],
+    ],
+];
