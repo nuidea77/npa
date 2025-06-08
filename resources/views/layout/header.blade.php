@@ -2,8 +2,8 @@
 
     <nav class="navbar navbar-dark " aria-label="Ninth navbar example">
 <div class="container-fluid d-flex justify-content-between">
-      <a href="/" class="w-63  align-items-center mb-md-0 me-md-auto text-decoration-none">
-        <img src="{{ asset('assets/img/logo.png') }}" class="img-fluid" alt="" >
+      <a href="/" class="w-63 py-2  align-items-center mb-md-0 me-md-auto text-decoration-none">
+        <img src="{{ asset('assets/img/logo.png') }}" class="img-fluid" width="200px"  alt="" >
       </a>
         <?php
         $currentLocale = app()->getLocale();

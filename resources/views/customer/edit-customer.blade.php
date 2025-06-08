@@ -2,7 +2,15 @@
 
 @section('content')
     <div class="container mt-5">
-        <h2 class="text-center fw-bold">@lang('customer.edit_info')</h2>
+          <div class="row py-5">
+            <div class="col-lg-12">
+               <a href="{{ url()->previous() }}" class="float-start program-date text-decoration-none">
+    <i class="bi bi-chevron-left"></i> @lang('texts.back')
+</a>
+                <h1 class="text-center fw-bold program-title">@lang('customer.edit_info')</h1>
+            </div>
+        </div>
+
 
         @if ($errors->any())
             <div class="alert alert-danger">

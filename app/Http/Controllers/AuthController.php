@@ -8,10 +8,13 @@ use App\Models\Customer;
 use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
-    public function showLoginForm()
-    {
-        return view('customer.signin');
+ public function showLoginForm()
+{
+    if (auth()->guard('customer')->check()) {
+        return redirect('/customer/dashboard');
     }
+    return view('customer.signin');
+}
 
     public function login(Request $request)
     {

@@ -18,12 +18,12 @@
   <div class="container-fluid px-3">
     <div class="row">
       <!-- Background image side -->
-      <div class="col-lg-6 d-none d-lg-flex justify-content-center align-items-center bg-light"
+      <div class="col-lg-8 d-none d-lg-flex justify-content-center align-items-center bg-light"
            style="background: url('{{ asset('assets/img/about-cover.jpg') }}') no-repeat center center; background-size: cover;">
       </div>
 
       <!-- Form side -->
-      <div class="col-lg-6 d-flex justify-content-center align-items-center min-vh-lg-100">
+      <div class="col-lg-4 d-flex justify-content-center align-items-center min-vh-lg-100">
         <div class="w-100" style="max-width: 25rem;">
 
           {{-- Error Alerts --}}

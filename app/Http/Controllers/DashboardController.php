@@ -6,11 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\Customer; // Assume you have a Customer model
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Models\StampHistory; // Assuming you have a StampHistory model
 use App\Models\Lesson;
 class DashboardController extends Controller
 {
+    public function feedback()
+
+    {
+        return view('customer.form');
+    }
+
    public function index()
     {
+
 
         return view('customer.dashboard');
     }
@@ -25,9 +33,15 @@ class DashboardController extends Controller
             if (!$customer) {
                 abort(403, 'No customer authenticated');
             }
+            // Retrieve the customer's stamp history
+            $stampHistory = StampHistory::with('stamp')->where('customer_id', $customer->id)->get();
+            $lessons = Lesson::orderBy('started_at', 'desc')->get();
+            // Retrieve the lessons associated with the customer
+
+
 
             // Pass the customer to the view
-            return view('customer.dashboard', compact('customer'));
+            return view('customer.dashboard', compact('customer', 'stampHistory', 'lessons'));
         }
 
 

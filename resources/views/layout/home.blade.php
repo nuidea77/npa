@@ -172,6 +172,28 @@
             @csrf
             <div class="row">
                 <div class="col-lg-6">
+                    <div class="mb-3">
+    <label for="type" class="form-label">@lang('texts.type')</label>
+    <select name="type" id="type" class="form-select" required>
+        <option value="">-- Сонгох --</option>
+        <option value="1" @if(old('type') == '1') selected @endif>Санал хүсэлт</option>
+        <option value="2" @if(old('type') == '2') selected @endif>Талархал</option>
+        <option value="3" @if(old('type') == '3') selected @endif>Гомдол</option>
+    </select>
+</div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="mb-3">
+    <label for="subtitle" class="form-label">@lang('texts.subtitle')</label>
+    <select name="subtitle" id="subtitle" class="form-select" required>
+        <option value="">-- Сонгох --</option>
+        <option value="1" @if(old('subtitle') == '1') selected @endif>Сайн дурын ажил</option>
+        <option value="2" @if(old('subtitle') == '2') selected @endif>Ажлын зар</option>
+        <option value="3" @if(old('subtitle') == '3') selected @endif>Бусад</option>
+    </select>
+</div>
+                </div>
+                <div class="col-lg-6">
                     <label for="email" class="form-label required-field">@lang('texts.email')</label>
                     <input type="email" class="form-control" id="email" name="email" required placeholder="@lang('texts.email-placeholder')">
                 </div>

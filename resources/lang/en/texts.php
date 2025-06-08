@@ -76,6 +76,14 @@ return [
     'purpose' => 'Purpose',
     'timeline' => 'Timeline',
     'team' => 'Team',
+    'type' => 'Type',
+    'subtitle' => 'Subtitle',
+    'login-required' => 'Login Required',
+    'login' => 'Login',
+    'lesson-not-started' => 'Lesson has not started yet',
+    'lesson-ended' => 'Lesson has ended',
+    'start-time' => 'Start Time',
+    'end-time' => 'End Time',
 
 
 ];

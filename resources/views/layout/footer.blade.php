@@ -2,8 +2,7 @@
     <footer>
       <div class="row g-3 py-4">
         <div class="col-lg-4 ">
-          <img src="{{asset('assets/img/image 2.png')}}" alt="">
-          <h6 class="fw-semibold text-white text-uppercase">National park academy</h6>
+          <img src="{{asset('assets/img/logo.png')}}" class="img-fluid" width="250px" alt="">
           <p class="text-white">Тусгай хамгаалалттай газар үндэсний бахархал</p>
 
 

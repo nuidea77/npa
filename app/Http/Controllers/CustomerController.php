@@ -13,6 +13,9 @@ class CustomerController extends Controller
 
     public function create()
     {
+        if (auth()->guard('customer')->check()) {
+            return redirect('/customer/dashboard');
+        }
         return view('customer.register');
     }
 

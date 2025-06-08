@@ -43,18 +43,16 @@ class LessonController extends Controller
     {
         // If the lesson requires authentication (type 1)
         if ($lesson->type == 1 && !$isAuthenticated) {
-            return $this->modalResponse('login', 'Та хичээлийг үзэхийн тулд нэвтрэх шаардлагатай');
-        }
+        return $this->modalResponse('login', __('texts.login-required'));
+    }
 
-        // If the lesson has not started yet
-        if ($startedNotYet) {
-            return $this->modalResponse('not_started', 'Хичээл эхлэх хугацаа болоогүй байна', $lesson->started_at);
-        }
+    if ($startedNotYet) {
+        return $this->modalResponse('not_started', __('texts.lesson-not-started'), $lesson->started_at);
+    }
 
-        // If the lesson has finished
-        if ($finishedPassed) {
-            return $this->modalResponse('finished', 'Хичээл дууссан байна', $lesson->finished_at);
-        }
+    if ($finishedPassed) {
+        return $this->modalResponse('finished', __('texts.lesson-ended'), $lesson->finished_at);
+    }
 
         // No modal
         return $this->modalResponse();

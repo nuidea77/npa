@@ -24,9 +24,9 @@
     <div class="container max-width-1920">
         <div class="row py-5">
             <div class="col-lg-12">
-                <a href="{{ route('news.index') }}" class="float-start program-date text-decoration-none">
-                    <i class="bi bi-chevron-left"></i> @lang('texts.back')
-                </a>
+               <a href="{{ url()->previous() }}" class="float-start program-date text-decoration-none">
+    <i class="bi bi-chevron-left"></i> @lang('texts.back')
+</a>
                 <h1 class="text-center fw-bold program-title">{{ $data->getTranslated('title') }}</h1>
             </div>
         </div>

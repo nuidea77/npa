@@ -12,7 +12,7 @@ use App\Models\Place;
 class HomeController extends Controller
 {
     public function index() {
-        $program = Program::with('translations')->orderBy('order', 'asc')->paginate(4);
+        $program = Program::with('translations')->where('is_active', 1)->orderBy('order', 'asc')->paginate(4);
         $slider = Slider::orderBy('order', 'asc')->get();
         $post = Post::with('translations')->where([['status', '=','PUBLISHED']])->orderBy('created_at', 'desc')->paginate(4);
         // Fetch all cities for the province dropdown

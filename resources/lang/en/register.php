@@ -57,6 +57,7 @@ return [
 'error_password_confirmation' => 'Passwords must match.',
 'error_password_min' => 'The password must be at least 8 characters.',
 'error_title' => 'Oops! Please check the following errors:',
+'logout' => 'Log Out',
 
 
 

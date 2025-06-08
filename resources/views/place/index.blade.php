@@ -10,9 +10,9 @@
       </div>
     <div class="row pb-3">
         <div class="col-md-12 pt-5 ">
-            <a href="{{ route('place.index') }}" class="float-start program-date text-decoration-none">
-                <i class="bi bi-chevron-left"></i> @lang('texts.back')
-            </a>
+             <a href="{{ url()->previous() }}" class="float-start program-date text-decoration-none">
+    <i class="bi bi-chevron-left"></i> @lang('texts.back')
+</a>
             <h4 class="text-center  text-uppercase fw-semibold">@lang('texts.protected-areas')</h4>
         </div>
     </div>

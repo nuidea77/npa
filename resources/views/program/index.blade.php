@@ -9,9 +9,9 @@
 <div class="container-fluid max-width-1920 py-5">
     <div class="row pb-3">
         <div class="col-md-12 ">
-            <a href="{{ route('place.index') }}" class="float-start program-date text-decoration-none">
-                <i class="bi bi-chevron-left"></i> @lang('texts.back')
-            </a>
+             <a href="{{ url()->previous() }}" class="float-start program-date text-decoration-none">
+    <i class="bi bi-chevron-left"></i> @lang('texts.back')
+</a>
             <h4 class="fw-semibold text-uppercase title-section color-primary text-center">@lang('texts.programs')</h4>
         </div>
     </div>
@@ -22,8 +22,8 @@
     </div> --}}
 
     <div class="row g-3">
-        @if (isset($program))
-        @foreach ($program as $data)
+        @if (isset($programs))
+        @foreach ($programs as $data)
       <div class="col-lg-3 col-md-6" data-aos="fade-right">
         <div class="card home-card" style="background-image: url({{ Voyager::image($data->f_image) }}); background-position: center; background-repeat: no-repeat; background-size: cover;">
           <div class="overlay"></div>
@@ -46,7 +46,7 @@
     <div class="row pt-3">
         <div class="col-lg-12 ">
         <nav aria-label="Page navigation example" class="float-end">
-          {{ $program->render() }}
+          {{ $programs->render() }}
         </nav>
       </div>
     </div>

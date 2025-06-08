@@ -9,8 +9,17 @@
         <!-- Secondary Content -->
         <div class="navbar-nav-wrap-secondary-content">
           <!-- Navbar -->
+             <?php
+        $currentLocale = app()->getLocale();
+        $newLocale = $currentLocale === 'en' ? 'mn' : 'en';
+        ?>
+        <a class="btn   fw-semibold   mx-3"
+           href="/set-locale/<?php echo $newLocale; ?>">
+          <?php echo strtoupper($newLocale); ?>
+        </a>
           <ul class="navbar-nav">
             <li class="nav-item">
+
               <!-- Account -->
               @auth('customer')
                 <div class="dropdown">
@@ -34,8 +43,8 @@
 
                     <div class="dropdown-divider"></div>
 
+                    <a class="dropdown-item" href="{{ route('customer.dashboard') }}">@lang('customer.dashboard')</a>
                     <a class="dropdown-item" href="{{ route('customer.edit') }}">@lang('customer.profile_and_account')</a>
-                    <a class="dropdown-item" href="{{ route('customer.dashboard') }}">@lang('customer.settings')</a>
 
                     <div class="dropdown-divider"></div>
 

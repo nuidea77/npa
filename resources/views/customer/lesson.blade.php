@@ -29,27 +29,34 @@
                         <div id="lesson-access-modal" class="modal fade"  data-bs-backdrop="static" data-bs-keyboard="false">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
+                                    <div class="modal-header">
+                                            <a href="{{ url()->previous() }}" class="float-start program-date text-decoration-none">
+    <i class="bi bi-chevron-left"></i> @lang('texts.back')
+</a>
+                                    </div>
 
                                     <div class="modal-body">
-                                        @switch($modalStatus['type'])
-                                            @case('login')
-                                                <h2>Нэвтрэх шаардлага</h2>
-                                                <p>{{ $modalStatus['message'] }}</p>
-                                                <a href="{{ route('customer.signin') }}" class="btn btn-primary">Нэвтрэх</a>
-                                            @break
 
-                                            @case('not_started')
-                                                <h2>Хичээл эхлээгүй</h2>
-                                                <p>{{ $modalStatus['message'] }}</p>
-                                                <p>Эхлэх хугацаа: {{ $modalStatus['startTime'] }}</p>
-                                            @break
+                                       @switch($modalStatus['type'])
+    @case('login')
+        <h2>@lang('texts.login-required')</h2>
+        <p>{{ $modalStatus['message'] }}</p>
+        <a href="{{ route('customer.signin') }}" class="btn btn-primary">@lang('texts.login')</a>
+        @break
 
-                                            @case('finished')
-                                                <h2>Хичээл дууссан</h2>
-                                                <p>{{ $modalStatus['message'] }}</p>
-                                                <p>Дуусах хугацаа: {{ $modalStatus['endTime'] }}</p>
-                                            @break
-                                        @endswitch
+    @case('not_started')
+        <h2>@lang('texts.lesson-not-started')</h2>
+        <p>{{ $modalStatus['message'] }}</p>
+        <p><strong>@lang('texts.start-time'):</strong> {{ $modalStatus['startTime'] }}</p>
+        @break
+
+    @case('finished')
+        <h2>@lang('texts.lesson-ended')</h2>
+        <p>{{ $modalStatus['message'] }}</p>
+        <p><strong>@lang('texts.end-time'):</strong> {{ $modalStatus['endTime'] }}</p>
+        @break
+@endswitch
+
                                     </div>
                                 </div>
                             </div>

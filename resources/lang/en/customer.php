@@ -23,4 +23,19 @@ return [
     'update_info' => 'Update Information',
     'cancel' => 'Cancel',
     'dashboard' => 'Dashboard',
+    'profile_and_account' => 'Profile edit',
+   'stamp_name' => 'Stamp Name',
+'stamp_date' => 'Date Received',
+'stamp_history' => 'Stamp History',
+
+    'form_title' => 'Send Feedback',
+    'form_desc' => 'If you have any feedback, words of appreciation, or require assistance, please don’t hesitate to reach out through the contact form below.',
+    'form_button' => 'Submit',
+    'lesson_list' => 'Lesson List',
+    'no_lesson' => 'No lessons available at the moment.',
+    'started_date' => 'Start Date',
+
+
+
+
 ];
