@@ -33,15 +33,15 @@ Route::get('/set-locale/{lang}', function ($lang) {
 
 
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/programs', [ProgramController::class, 'index'])->name('programs.index');
 Route::get('/program/{id}', [ProgramController::class, 'view']);
 
 Route::get('/posts', [NewsController::class, 'index'])->name('news.index');
 Route::get('/post/{id}', [NewsController::class, 'view']);
 
-Route::get('/places', [PlaceController::class, 'index'])->name('place.index');
-Route::get('/place/{id}', [PlaceController::class, 'view'])->name('place.view');
+Route::get('/spa', [PlaceController::class, 'index'])->name('place.index');
+Route::get('/spa/{id}', [PlaceController::class, 'view'])->name('place.view');
 Route::get('/programs/{id}/register', [ProgramController::class, 'showRegistrationForm'])->name('program.register.form');
 Route::post('/programs/{id}/register', [ProgramController::class, 'submitRegistration'])->name('programs.register');
 

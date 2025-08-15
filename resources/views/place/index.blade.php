@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="container-fluid max-width-1920 ">
+<div class="container-fluid  ">
     <div class="row">
         <div class="col-lg-12" style="background-image: url(assets/img/about-cover.jpg); background-size: cover; background-position: center; height: 650px;">
         </div>
@@ -17,11 +17,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8">
 
-        </div>
-        <div class="col-md-4">
-            <div class=" float-end">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-center">
                 <form method="GET" action="{{ route('place.index') }}">
                     <div class="d-flex justify-content-end">
                         <!-- Province (City) Filter -->
@@ -57,7 +55,7 @@
     <hr>
 </div>
 
-<div class="container-fluid py-4">
+<div class="container-fluid max-width-1920 py-4">
     <div class="row pb-5">
         <!-- Check if places exist -->
         @if ($places->isEmpty())
@@ -66,7 +64,7 @@
             </div>
         @else
             @foreach ($places as $data)
-        <div class="col-md-6 col-lg-6 mb-4" data-aos="fade-right">
+        <div class="col-md-4 col-lg-4 mb-4" data-aos="fade-right">
             <div class="card program-card">
                 <img src="{{ Voyager::image($data->f_image) }}" style="height: 350px;" alt="Хөвсгөл нуур">
                 <div class="card-body bg-primary">

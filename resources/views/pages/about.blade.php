@@ -8,6 +8,7 @@
   </div>
   <div class="container py-5">
     <div class="row">
+
       <div class="col-lg-6">
         <h1 class="text-center fw-bold about-title ">Бидний тухай</h1>
       </div>

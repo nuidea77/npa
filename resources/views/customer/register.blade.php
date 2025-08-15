@@ -25,7 +25,36 @@
       </div>
 
       <div class="col-lg-4 d-flex justify-content-center align-items-center min-vh-lg-100">
+        {{-- Modal HTML --}}
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="successModalLabel">Амжилттай</h5>
+      </div>
+      <div class="modal-body text-center">
+        {{ $success_message ?? '' }}
+      </div>
+      <div class="modal-footer">
+        <a href="/" class="btn btn-primary">Ойлголоо</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{-- Modal-г автоматаар харуулах JS --}}
+@if(!empty($success_message))
+<script>
+    window.addEventListener('DOMContentLoaded', function () {
+        var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+        successModal.show();
+    });
+</script>
+@endif
+
         <div class="w-100 " style="max-width: 25rem;">
+
+
             @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -61,11 +90,13 @@
               <div class="mb-3 col-lg-6 col-md-6">
                   <label for="email" class="form-label">@lang('register.email')</label>
                   <input type="email" name="email" id="email" class="form-control" placeholder="@lang('register.enter_email')" value="{{ old('email') }}" required>
-              </div>
+               <small id="email-error" class="text-danger"></small>
+                </div>
               <div class="mb-3 col-lg-6 col-md-6">
                   <label for="phone" class="form-label">@lang('register.phone')</label>
                   <input type="text" name="phone" id="phone" class="form-control" placeholder="@lang('register.enter_phone')" value="{{ old('phone') }}" required>
-              </div>
+              <small id="phone-error" class="text-danger"></small>
+                </div>
               <div class="mb-3 col-lg-6 col-md-6">
                 <label for="sex" class="form-label">@lang('register.sex')</label>
                 <select name="sex" id="sex" class="form-select" required>
@@ -181,6 +212,41 @@ document.addEventListener('DOMContentLoaded', function () {
   password.addEventListener('input', checkPasswordLength);
   passwordConfirmation.addEventListener('input', checkPasswordMatch);
 });
+  document.addEventListener("DOMContentLoaded", function () {
+
+    const emailField = document.getElementById('email');
+    const phoneField = document.getElementById('phone');
+    const emailError = document.getElementById('email-error');
+    const phoneError = document.getElementById('phone-error');
+
+    // Имэйл валидаци
+    emailField.addEventListener('input', function () {
+      const email = emailField.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailRegex.test(email)) {
+        emailError.textContent = 'Имэйл бичиглэл буруу байна. @ болон . ашиглана уу.';
+      } else {
+        emailError.textContent = '';
+      }
+    });
+
+    // Утасны дугаар валидаци
+    phoneField.addEventListener('input', function () {
+      const phone = phoneField.value.trim();
+      const phoneRegex = /^\d{8}$/;
+
+      if (!phoneRegex.test(phone)) {
+        phoneError.textContent = 'Утасны дугаар 8 оронтой цифр байх ёстой.';
+      } else {
+        phoneError.textContent = '';
+      }
+    });
+
+
+
+  });
+
 </script>
 
 </body>

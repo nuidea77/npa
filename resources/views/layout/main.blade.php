@@ -53,6 +53,24 @@
       easing: 'ease-in-out',
       once: false
     });
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggler = document.querySelector('.menu-toggle');
+    const collapseEl = document.getElementById('navbarsExample07XL');
+    const openText = toggler.querySelector('.open-text');
+    const closeText = toggler.querySelector('.close-text');
+
+    collapseEl.addEventListener('show.bs.collapse', () => {
+      openText.style.display = 'none';
+      closeText.style.display = 'inline-block';
+    });
+
+    collapseEl.addEventListener('hide.bs.collapse', () => {
+      openText.style.display = 'inline-block';
+      closeText.style.display = 'none';
+    });
+  });
+</script>
+
   </script>
 </body>
 

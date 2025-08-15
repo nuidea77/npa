@@ -50,9 +50,8 @@ class CustomerController extends Controller
 
         $customer->save();
 
-        session()->flash('success', 'Таны бүртгэл амжилттай үүслээ. Таны бүртгэлийг ажлын 72 цагийн дотор баталгаажуулж, хариу өгнө.');
-
-    return redirect()->route('customer.signin');
-    }
+return view('customer.register', [
+    'success_message' => 'Таны бүртгэл үүсгэх хүсэлтийг амжилттай илгээлээ. Тантай бид эргэн холбогдох болно.'
+]);  }
 }
 

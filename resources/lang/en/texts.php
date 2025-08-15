@@ -84,6 +84,8 @@ return [
     'lesson-ended' => 'Lesson has ended',
     'start-time' => 'Start Time',
     'end-time' => 'End Time',
+    'close' => 'Close',
+    'choose' => 'Choose',
 
 
 ];

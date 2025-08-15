@@ -1,14 +1,19 @@
 @extends('layout.main')
 @section('content')
 <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12" style="background-image: url(assets/img/about-cover.jpg); background-size: cover; background-position: center; height: 650px;">
-      </div>
-    </div>
+
 </div>
 <div class="container">
     <div class="row py-5">
         <div class="col-lg-12">
+              <div class="row pb-5">
+        <div class="col-md-12 pt-5 ">
+             <a href="{{ url()->previous() }}" class="float-start program-date text-decoration-none">
+    <i class="bi bi-chevron-left"></i> @lang('texts.back')
+</a>
+            <h4 class="text-center  text-uppercase fw-semibold">@lang('texts.faq')</h4>
+        </div>
+    </div>
             <div class="accordion" id="accordionExample">
                 @if (isset($faqs))
                 @foreach ($faqs as $data)

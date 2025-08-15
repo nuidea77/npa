@@ -2,7 +2,7 @@
 
     <nav class="navbar navbar-dark " aria-label="Ninth navbar example">
 <div class="container-fluid d-flex justify-content-between">
-      <a href="/" class="w-63 py-2  align-items-center mb-md-0 me-md-auto text-decoration-none">
+      <a href="/" class="w-60 py-2  align-items-center mb-md-0 me-md-auto text-decoration-none">
         <img src="{{ asset('assets/img/logo.png') }}" class="img-fluid" width="200px"  alt="" >
       </a>
         <?php
@@ -15,9 +15,16 @@
         </a>
 
 
-      <button class="navbar-toggler   border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <button class="navbar-toggler border-0 menu-toggle" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarsExample07XL" aria-controls="navbarsExample07XL"
+        aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon open-text"></span>
+  <span class="close-text text-white " style="display: none;">
+    <i class="bi bi-x-lg"></i> @lang("texts.close")
+  </span>
+</button>
+
+
 
     </div>
       <div class="collapse navbar-collapse" id="navbarsExample07XL">
@@ -40,7 +47,7 @@
           <li class="nav-item me-5  dropdown ">
             <a class="nav-link fs-5 fw-bold dropdown-toggle" href="#" data-bs-toggle="dropdown">@lang("texts.thg")</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/places">@lang("texts.thg")</a></li>
+              <li><a class="dropdown-item" href="/spa">@lang("texts.thg")</a></li>
               <li><a class="dropdown-item" href="/customer/signin">@lang("texts.login")</a></li>
             </ul>
           </li>
