@@ -145,7 +145,7 @@
   </div>
   </div>
   <hr>
-  <div class="container-fluid  max-width-1920 py-5" data-aos="zoom-in">
+  <div class="container-fluid  max-width-1920 py-5" data-aos="fade-up">
     <div class="row">
       <div class="col-lg-4">
         <h1 class="fw-semibold fs-3 text-uppercase"> @lang('texts.submit-comment')</h1>

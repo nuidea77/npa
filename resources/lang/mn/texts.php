@@ -86,6 +86,9 @@ return [
     'end-time' => 'Дуусах огноо',
     'close' => 'Хаах',
     'choose' => 'Сонгох',
+    'stamp-add' => 'Тамга нэмэх',
+    'stamp' => 'Тамга',
+    'stamp-history' => 'Тамгын түүх',
 
 
 

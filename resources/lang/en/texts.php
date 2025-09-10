@@ -86,6 +86,9 @@ return [
     'end-time' => 'End Time',
     'close' => 'Close',
     'choose' => 'Choose',
+    'stamp-add' => 'Add Stamp',
+    'stamp' => 'Stamp',
+    'stamp-history' => 'Stamp History',
 
 
 ];

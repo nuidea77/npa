@@ -27,6 +27,7 @@ return [
    'stamp_name' => 'Stamp Name',
 'stamp_date' => 'Date Received',
 'stamp_history' => 'Stamp History',
+'no_stamp_history' => 'No stamp history available.',
 
     'form_title' => 'Send Feedback',
     'form_desc' => 'If you have any feedback, words of appreciation, or require assistance, please don’t hesitate to reach out through the contact form below.',

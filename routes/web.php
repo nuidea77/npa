@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\Admin\StampAddController;
+use App\Http\Controllers\Admin\NotificationController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/lessons/{id}', [LessonController::class, 'view'])->name('lessons.view');
@@ -82,11 +83,17 @@ Route::get('/customer/lessons/{id}', [CustomerLessoncontroller::class, 'view'])-
   // Voyager routes should be inside this group
   Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
-Route::get('stamp-add', [StampAddController::class, 'index'])->name('stamp_add.index');
+    Route::get('stamp-add', [StampAddController::class, 'index'])->name('stamp_add.index');
     Route::get('stamp-add/create', [StampAddController::class, 'create'])->name('stamp_add.create');
     Route::post('stamp-add', [StampAddController::class, 'store'])->name('stamp_add.store');
-    Route::get('stamp-add/{id}/edit', [StampAddController::class, 'edit'])->name('stamp_add.edit');
-    Route::put('stamp-add/{id}', [StampAddController::class, 'update'])->name('stamp_add.update');
-    Route::delete('stamp-add/{id}', [StampAddController::class, 'destroy'])->name('stamp_add.destroy');
+    Route::get('stamp-add/{customer_id}/{stamp_id}/edit', [StampAddController::class, 'edit'])->name('stamp_add.edit');
+    Route::put('stamp-add/{customer_id}/{stamp_id}', [StampAddController::class, 'update'])->name('stamp_add.update');
+    Route::delete('stamp-add/{customer_id}/{stamp_id}', [StampAddController::class, 'destroy'])->name('stamp_add.destroy');
+ // Notification list page
+    Route::get('notifications', [NotificationController::class, 'index'])
+        ->name('voyager.notifications.index');
 
+    // AJAX route: notification уншсан гэж тэмдэглэх
+    Route::post('notifications/read', [NotificationController::class, 'markAsRead'])
+        ->name('notifications.read');
 });

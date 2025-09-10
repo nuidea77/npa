@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Customer; // Assume you have a Customer model
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
+use App\Notifications\NewCustomerNotification;
 use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
@@ -50,8 +52,15 @@ class CustomerController extends Controller
 
         $customer->save();
 
-return view('customer.register', [
-    'success_message' => 'Таны бүртгэл үүсгэх хүсэлтийг амжилттай илгээлээ. Тантай бид эргэн холбогдох болно.'
-]);  }
+$admins = User::where('role_id', 1)->get(); // Voyager админ role_id=1 гэж үзье
+    foreach ($admins as $admin) {
+        $admin->notify(new NewCustomerNotification($customer));
+    }
+
+    return view('customer.register', [
+        'success_message' => 'Таны бүртгэл үүсгэх хүсэлтийг амжилттай илгээлээ. Тантай бид эргэн холбогдох болно.'
+    ]);
 }
+};
+
 
