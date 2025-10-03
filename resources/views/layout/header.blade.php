@@ -8,7 +8,7 @@
             <div class="d-flex align-items-center gap-2 flex-nowrap">
                 <?php
                 $currentLocale = app()->getLocale();
-                $newLocale = $currentLocale === 'en' ? 'mn' : 'en';
+                $newLocale = $currentLocale === 'mn' ? 'en' : 'mn';
                 ?>
 
                 <a class="btn btn-outline-light fw-semibold rounded-5 px-3"

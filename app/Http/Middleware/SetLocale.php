@@ -13,13 +13,13 @@ class SetLocale
     public function handle(Request $request, Closure $next)
     {
         // 1. Админ самбараас (Voyager settings) хэлний тохиргоог авах
-        $defaultLocale = Voyager::setting('site.locale', 'en');
+        $defaultLocale = Voyager::setting('site.locale', 'mn');
 
         // 2. Session эсвэл Query параметрээс хэл авах
         $locale = $request->query('lang', Session::get('locale', $defaultLocale));
 
         // 3. Зөвшөөрөгдсөн хэл мөн эсэхийг шалгах
-        if (!in_array($locale, ['en', 'mn'])) {
+        if (!in_array($locale, ['mn', 'en'])) {
             $locale = $defaultLocale;
         }
 
