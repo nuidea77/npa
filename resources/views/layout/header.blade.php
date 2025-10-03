@@ -78,7 +78,6 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-custom">
                         <li><a class="dropdown-item" href="/spa">@lang("texts.thg")</a></li>
-                        <li><a class="dropdown-item" href="/customer/signin">@lang("texts.login")</a></li>
                     </ul>
                 </li>
 
