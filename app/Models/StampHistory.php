@@ -2,28 +2,30 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Customer;
-use App\Models\Stamp;
 
 class StampHistory extends Model
 {
-   use HasFactory;
+    protected $table = 'stamp_histories';
 
     protected $fillable = [
-        'customer_id',
+        'protected_area_id',
         'stamp_id',
+        'assigned_date',
     ];
-    protected $table = 'stamp_histories';
-      public function customer()
+
+    protected $casts = [
+        'assigned_date' => 'date',
+    ];
+
+    // Relationships
+    public function protectedArea()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(ProtectedArea::class, 'protected_area_id');
     }
 
     public function stamp()
     {
-        return $this->belongsTo(Stamp::class);
+        return $this->belongsTo(Stamp::class, 'stamp_id');
     }
-
 }

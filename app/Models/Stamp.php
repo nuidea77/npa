@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\StampHistory;
+use App\Models\ProtectedArea;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Stamp extends Model
@@ -24,9 +25,9 @@ class Stamp extends Model
 
     protected $table = 'stamps';
 
-public function customers()
+public function protectedArea()
 {
-    return $this->belongsToMany(Customer::class, 'stamp_histories');
+    return $this->belongsToMany(ProtectedArea::class, 'stamp_histories');
 }
 
 

@@ -1,10 +1,12 @@
 @extends('layout.main')
-@section('content')
 
 @section('meta')
-    <title>{{ $data->getTranslated('title') }} | {{ config('app.name') }}</title>
+    <title>{{ $data->getTranslated('title') }} | National Park Academy </title>
     <meta name="description" content="{{ Str::limit(strip_tags($data->getTranslated('excerpt')), 160) }}">
     <link rel="canonical" href="{{ url()->current() }}">
+    <meta name="keywords" content="{{ $data->getTranslated('title') }}, National Park Academy ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="{{ $data->getTranslated('title') }}">
@@ -20,31 +22,34 @@
     <meta name="twitter:image" content="{{ Voyager::image($data->image) }}">
 @endsection
 
+@section('content')
 <section>
     <div class="container max-width-1920">
         <div class="row py-5">
             <div class="col-lg-12">
-               <a href="{{ url()->previous() }}" class="float-start program-date text-decoration-none">
-    <i class="bi bi-chevron-left"></i> @lang('texts.back')
-</a>
+                <a href="{{ url()->previous() ?? route('home') }}" class="float-start program-date text-decoration-none">
+                    <i class="bi bi-chevron-left"></i> @lang('texts.back')
+                </a>
                 <h1 class="text-center fw-bold program-title">{{ $data->getTranslated('title') }}</h1>
             </div>
         </div>
+
         <div class="row py-2">
             <div class="col-lg-8">
-                <p class="text-start program-date">@lang('texts.last-updated') {{ date('Y/m/d', strtotime($data->created_at)) }}</p>
+                <p class="text-start program-date">@lang('texts.last-updated') {{ $data->created_at->format('Y/m/d') }}</p>
             </div>
             <div class="col-lg-4">
                 <div class="d-flex share-icons float-end">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" class="share-icon" target="_blank">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->current()) }}" class="share-icon" target="_blank">
                         <i class="bi bi-facebook"></i>
                     </a>
-                    <a href="https://twitter.com/intent/tweet?url={{ url()->current() }}&text={{ $data->getTranslated('title') }}" class="share-icon" target="_blank">
+                    <a href="https://twitter.com/intent/tweet?url={{ urlencode(url()->current()) }}&text={{ urlencode($data->getTranslated('title')) }}" class="share-icon" target="_blank">
                         <i class="bi bi-twitter-x"></i>
                     </a>
                 </div>
             </div>
         </div>
+
         <article class="row py-3">
             <div class="col-lg-12">
                 <p>{{ $data->getTranslated('excerpt') }}</p>
@@ -58,4 +63,4 @@
         </article>
     </div>
 </section>
-@stop
+@endsection

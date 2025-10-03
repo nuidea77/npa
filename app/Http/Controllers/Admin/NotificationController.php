@@ -15,13 +15,35 @@ class NotificationController extends Controller
         return view('vendor.voyager.notifications.index', compact('notifications'));
     }
 
-    // AJAX: notification уншсан гэж тэмдэглэх
-    public function markAsRead(Request $request)
-    {
-        $notification = Auth::user()->notifications()->find($request->id);
-        if($notification){
-            $notification->markAsRead();
-        }
-        return response()->json(['success' => true]);
+public function markAsRead(Request $request)
+{
+    $notification = auth()->user()->notifications()->find($request->id);
+
+    if ($notification && !$notification->read_at) {
+        // Зөвхөн уншаагүй бол л unш гэж тэмдэглэх
+        $notification->markAsRead();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Notification marked as read',
+            'unread_count' => auth()->user()->unreadNotifications->count()
+        ]);
     }
+
+    if ($notification && $notification->read_at) {
+        // Аль хэдийн уншсан бол
+        return response()->json([
+            'success' => true,
+            'message' => 'Already read',
+            'unread_count' => auth()->user()->unreadNotifications->count()
+        ]);
+    }
+
+    return response()->json([
+        'success' => false,
+        'message' => 'Notification not found'
+    ], 404);
+}
+
+
 }

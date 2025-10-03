@@ -57,22 +57,16 @@
                 <label for="phone" class="form-label">@lang('customer.phone')</label>
                 <input type="text" name="phone" id="phone" class="form-control" value="{{ $customer->phone }}" required>
             </div>
-            <div class="mb-3">
-                <label for="hz" class="form-label">@lang('register.protected_area')</label>
-                <select name="hz" id="hz" class="form-select" required>
-                    <option value="" disabled selected>@lang('register.select_protected_area')</option>
-                    <option value="1" {{ $customer->hz == 1 ? 'selected' : '' }}>@lang('register.tarvagatai_nuru')</option>
-                    <option value="2" {{ $customer->hz == 2 ? 'selected' : '' }}>@lang('register.orkhon_khondii')</option>
-                    <option value="3" {{ $customer->hz == 3 ? 'selected' : '' }}>@lang('register.munkhkhairkhan')</option>
-                    <option value="4" {{ $customer->hz == 4 ? 'selected' : '' }}>@lang('register.ikh_bogd_uul')</option>
-                    <option value="5" {{ $customer->hz == 5 ? 'selected' : '' }}>@lang('register.myangan_ugalzat')</option>
-                    <option value="6" {{ $customer->hz == 6 ? 'selected' : '' }}>@lang('register.nomrog')</option>
-                    <option value="7" {{ $customer->hz == 7 ? 'selected' : '' }}>@lang('register.khar_us_nuur')</option>
-                    <option value="8" {{ $customer->hz == 8 ? 'selected' : '' }}>@lang('register.achit_nuur')</option>
-                    <option value="9" {{ $customer->hz == 9 ? 'selected' : '' }}>@lang('register.otgontenger')</option>
-                    <option value="10" {{ $customer->hz == 10 ? 'selected' : '' }}>@lang('register.bogdkhan_uul')</option>
-                    <option value="11" {{ $customer->hz == 11 ? 'selected' : '' }}>@lang('register.ulaan_taiga')</option>
-                    <option value="12" {{ $customer->hz == 12 ? 'selected' : '' }}>@lang('register.dornod_mongol')</option>
+             <div class="mb-3 col-lg-12 col-md-12">
+                <label for="protected_area_id" class="form-label">@lang('register.protected_area')</label>
+                <select name="protected_area_id" id="protected_area_id" class="form-select" required>
+                    <option value="" disabled>@lang('register.select_protected_area')</option>
+                    @foreach($protected_areas as $area)
+                        <option value="{{ $area->id }}"
+                            {{ $customer->protected_area_id == $area->id ? 'selected' : '' }}>
+                            {{ $area->name }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
             <div class="mb-3">

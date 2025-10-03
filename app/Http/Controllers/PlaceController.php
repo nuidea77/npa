@@ -34,8 +34,8 @@ class PlaceController extends Controller
 
         return view('place.index', compact('places', 'cities', 'placesOptions'));
     }
-    public function view($id)   {
-        $data = Place::with('translations')->with('city')->where('id',  $id)->first();
+    public function view($slug)   {
+        $data = Place::with('translations')->with('city')->where('slug',  $slug)->first();
         return view('place.view')
         ->with('data', $data);
     }

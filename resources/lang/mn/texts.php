@@ -89,6 +89,7 @@ return [
     'stamp-add' => 'Тамга нэмэх',
     'stamp' => 'Тамга',
     'stamp-history' => 'Тамгын түүх',
+    'answer_optional' => 'Хариулт (заавал биш)',
 
 
 

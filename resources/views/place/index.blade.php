@@ -70,7 +70,7 @@
                 <div class="card-body bg-primary">
                     <h5 class="card-title">{{ $data->title }}</h5>
                     <p class="card-text card-description text-white ">{{ $data->hz_info}}</p>
-                    <a href="/spa/{{ $data->id}}" class="btn btn-hover-animation-switch  card-button fw-semibold text-white p-0 ">
+                    <a href="/spa/{{ $data->slug}}" class="btn btn-hover-animation-switch  card-button fw-semibold text-white p-0 ">
                         <span>
                         <span class="btn-text">@lang('texts.read-more')</span>
                         <span class="btn-icon"> <i class="bi bi-arrow-right"></i></span>

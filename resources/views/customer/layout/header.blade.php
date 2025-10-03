@@ -8,6 +8,50 @@
 
         <!-- Secondary Content -->
         <div class="navbar-nav-wrap-secondary-content">
+    <ul class="navbar-nav justify-content-center d-flex ms-auto  gap-1 py-3">
+        <li class="nav-item me-5 ">
+            <a href=" {{ route('index') }}" class="nav-link fs-5 fw-bold " >@lang("texts.home")</a>
+        </li>
+
+
+          <li class="nav-item me-5  dropdown ">
+            <a href="#" class="nav-link fs-5 fw-bold dropdown-toggle" data-bs-toggle="dropdown">@lang("texts.about-us")</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/about">@lang('texts.purpose')</a></li>
+                <li><a class="dropdown-item" href="/about">@lang("texts.about-us")</a></li>
+                <li><a class="dropdown-item" href="/about">@lang("texts.timeline")</a></li>
+                <li><a class="dropdown-item" href="/about">@lang("texts.team")</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item me-5 dropdown  ">
+            <a class="nav-link fs-5 fw-bold dropdown-toggle" data-bs-toggle="dropdown" href="/programs">@lang("texts.programs")</a>
+            <ul class="dropdown-menu">
+                @foreach($programs as $program)
+                <li><a class="dropdown-item" href="/program/{{ $program->id }}">{{ $program->title }}</a></li>
+                @endforeach
+            </ul>
+          </li>
+
+          <li class="nav-item me-5  dropdown ">
+            <a class="nav-link fs-5 fw-bold dropdown-toggle" href="#" data-bs-toggle="dropdown">@lang("texts.thg")</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/spa">@lang("texts.thg")</a></li>
+              <li><a class="dropdown-item" href="/customer/signin">@lang("texts.login")</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item me-5  dropdown ">
+            <a class="nav-link fs-5 fw-bold dropdown-toggle" href="#" data-bs-toggle="dropdown">@lang("texts.news")</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/posts">@lang("texts.news")</a></li>
+              <li><a class="dropdown-item" href="/faq">@lang("texts.faq")</a></li>
+            </ul>
+          </li>
+
+
+
+        </ul>
           <!-- Navbar -->
              <?php
         $currentLocale = app()->getLocale();

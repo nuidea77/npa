@@ -9,6 +9,20 @@ body {
   .pt-100 {
     padding-top: 87px;
   }
+  /* Profile Avatar хэмжээ */
+.profile-avatar {
+    width: 50px;   /* 40px-с 50px болгох */
+    height: 50px;  /* 40px-с 50px болгох */
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* Login icon хэмжээ */
+.btn .bi-person-circle {
+    font-size: 2rem;  /* icon том болгох */
+}
   .bg-primary {
     background-color: #384B27 !important;
   }

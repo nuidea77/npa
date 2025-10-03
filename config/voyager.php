@@ -95,25 +95,12 @@ return [
     |
     */
 
-    'multilingual' => [
-        /*
-         * Set whether or not the multilingual is supported by the BREAD input.
-         */
-        'enabled' => true,
+ 'multilingual' => [
+    'enabled' => true,
+    'default' => 'mn',
+    'locales' => ['mn', 'en'],
+],
 
-        /*
-         * Select default language
-         */
-        'default' => 'en',
-
-        /*
-         * Select languages that are supported.
-         */
-        'locales' => [
-            'en',
-            'mn',
-        ],
-    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -183,7 +170,7 @@ return [
     |
     */
 
-    'primary_color' => '#22A7F0',
+    'primary_color' => '#384c27',
 
     'show_dev_tips' => true, // Show development tip "How To Use:" in Menu and Settings
 

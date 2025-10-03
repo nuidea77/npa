@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CustomPageController extends Controller
 {
@@ -12,6 +13,11 @@ class CustomPageController extends Controller
      */
     public function index(Request $request)
     {
+        // Session check
+        if (!Auth::guard('web')->check()) { // Voyager default 'web' guard ашиглана
+            return redirect('/admin')->with('error', 'Та нэвтэрсэн байх шаардлагатай.');
+        }
+
         $query = Customer::query();
 
         // Apply status filter if provided
@@ -38,13 +44,16 @@ class CustomPageController extends Controller
      */
     public function updateVerifyStatus($id, $status)
     {
+        if (!Auth::guard('web')->check()) {
+            return redirect('/admin')->with('error', 'Та нэвтэрсэн байх шаардлагатай.');
+        }
+
         $customer = Customer::findOrFail($id);
 
         // Update the customer's verification status
         $customer->verify_status = $status;
         $customer->save();
 
-        // Redirect back with a success message
         $message = $status === 1
             ? 'Customer approved successfully!'
             : ($status === 0 ? 'Customer rejected successfully!' : 'Customer status updated successfully!');

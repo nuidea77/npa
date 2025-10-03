@@ -1,6 +1,6 @@
 <div class="container-fluid bg-primary footer text-white">
     <footer>
-      <div class="row g-3 py-4">
+      <div class="row g-3 py-4 max-width-1920 mx-auto px-3">
         <div class="col-lg-4 ">
           <img src="{{asset('assets/img/logo.png')}}" class="img-fluid" width="250px" alt="">
 
@@ -35,7 +35,7 @@
 
 </div>
 <div class="container-fluid bg-primary text-white">
-    <div class="d-flex flex-column flex-sm-row justify-content-between py-3  ">
+    <div class="d-flex flex-column max-width-1920 flex-sm-row justify-content-between py-3  ">
       <p class="text-white fs-6">National Park Academy | <strong> @lang('texts.all-rights-reserved') © <?php echo date("Y"); ?> </strong></p>
       <p>
         @lang('texts.developed-by') <a href="https://slash.mn" class="text-white text-decoration-none fs-6">Slash digital agency</a>

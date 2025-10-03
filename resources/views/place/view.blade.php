@@ -1,7 +1,7 @@
 @extends('layout.main')
 @section('content')
 @section('meta')
-    <title>{{ $data->getTranslated('title') }} | {{ config('app.name') }}</title>
+    <title>{{ $data->getTranslated('title') }} | National Park Academy </title>
     <meta name="description" content="{{ Str::limit(strip_tags($data->getTranslated('excerpt')), 160) }}">
     <link rel="canonical" href="{{ url()->current() }}">
 
@@ -18,10 +18,13 @@
     <meta name="twitter:description" content="{{ Str::limit(strip_tags($data->getTranslated('excerpt')), 160) }}">
     <meta name="twitter:image" content="{{ Voyager::image($data->f_image) }}">
 @endsection
-<div class="container max-width-1920 py-5 pe-5">
+<div class="max-width-1920">
+
+
+<div class="container  py-5 pe-5">
     <div class="row">
         <div class="col-md-12 ">
-            <a href="{{ route('place.index') }}" class="float-start program-date text-decoration-none">
+            <a href="{{ url()->previous() }}" class="float-start program-date text-decoration-none">
                 <i class="bi bi-chevron-left"></i> @lang('texts.back')
             </a>
             <h4 class="fw-semibold color-primary text-center">{{ $data->title }}</h4>
@@ -152,9 +155,10 @@
         </div>
     </div>
 </div>
+</div>
 
 <hr>
-<div class="container-fluid py-5" data-aos="zoom-in">
+<div class="container-fluid max-width-1920 py-5" data-aos="zoom-in">
     <div class="row">
       <div class="col-lg-4">
         <h1 class="fw-semibold fs-3 text-uppercase"> @lang('texts.submit-comment')</h1>
@@ -189,4 +193,5 @@
       </div>
     </div>
   </div>
+
 @stop

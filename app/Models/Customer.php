@@ -2,16 +2,18 @@
 
 namespace App\Models;
 use App\Models\StampHistory;
-
+use App\Models\ProtectedArea;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Customer extends Model implements AuthenticatableContract
 {
     use Authenticatable;
+    use HasFactory, Notifiable;
 
 
     protected $table = 'customers';
@@ -23,17 +25,18 @@ class Customer extends Model implements AuthenticatableContract
         'phone',
         'position',
         'password',
-        'hz',
+        'protected_areas_id',
         'avatar',
     ];
-public function stamps()
-{
-    return $this->belongsToMany(Stamp::class, 'stamp_histories');
-}
+  public function protectedArea()
+    {
+        return $this->belongsTo(ProtectedArea::class, 'protected_area_id');
+    }
 
-
-
-
+    public function stampHistories()
+    {
+        return $this->hasMany(StampHistory::class, 'protected_area_id', 'protected_area_id');
+    }
 
 }
 

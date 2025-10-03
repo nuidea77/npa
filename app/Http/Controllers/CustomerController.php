@@ -3,22 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Customer; // Assume you have a Customer model
+use App\Models\Customer;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Notifications\NewCustomerNotification;
-use Illuminate\Support\Facades\Auth;
+use App\Models\ProtectedArea;
 
 class CustomerController extends Controller
 {
-
-
     public function create()
     {
+        $protected_areas = ProtectedArea::orderBy('name')->get();
+
         if (auth()->guard('customer')->check()) {
             return redirect('/customer/dashboard');
         }
-        return view('customer.register');
+
+        return view('customer.register', [
+            'protected_areas' => $protected_areas,
+        ]);
     }
 
     public function store(Request $request)
@@ -28,9 +31,9 @@ class CustomerController extends Controller
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'sex' => 'nullable|string|max:255',
-            'hz' => 'nullable|string|max:255',
+            'protected_area_id' => 'required|exists:protected_areas,id',
             'position' => 'nullable|string|max:255',
-            'phone' => 'required|string|max:15',
+            'phone' => 'required|string|max:8',
             'password' => 'required|string|min:8|confirmed',
             'avatar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -40,7 +43,7 @@ class CustomerController extends Controller
         $customer->firstname = $request->firstname;
         $customer->lastname = $request->lastname;
         $customer->sex = $request->sex;
-        $customer->hz = $request->hz;
+        $customer->protected_area_id = $request->protected_area_id;
         $customer->position = $request->position;
         $customer->phone = $request->phone;
         $customer->password = Hash::make($request->password);
@@ -52,15 +55,15 @@ class CustomerController extends Controller
 
         $customer->save();
 
-$admins = User::where('role_id', 1)->get(); // Voyager админ role_id=1 гэж үзье
-    foreach ($admins as $admin) {
-        $admin->notify(new NewCustomerNotification($customer));
+        // Админд мэдэгдэл илгээх
+        $admins = User::where('role_id', 1)->get();
+        foreach ($admins as $admin) {
+            $admin->notify(new NewCustomerNotification($customer));
+        }
+
+        // redirect ашиглана, form дахин submit болохгүй
+  return redirect()->route('customer.register')
+                     ->with('success_message', true);
+
     }
-
-    return view('customer.register', [
-        'success_message' => 'Таны бүртгэл үүсгэх хүсэлтийг амжилттай илгээлээ. Тантай бид эргэн холбогдох болно.'
-    ]);
 }
-};
-
-

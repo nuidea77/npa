@@ -89,6 +89,8 @@ return [
     'stamp-add' => 'Add Stamp',
     'stamp' => 'Stamp',
     'stamp-history' => 'Stamp History',
+    'answer_optional' => 'Answer (optional)',
+    'answer_hint' => '',
 
 
 ];

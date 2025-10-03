@@ -25,29 +25,140 @@
       </div>
 
       <div class="col-lg-4 d-flex justify-content-center align-items-center min-vh-lg-100">
-        {{-- Modal HTML --}}
+        {{-- Сайжруулсан Modal HTML --}}
 <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header bg-success text-white">
-        <h5 class="modal-title" id="successModalLabel">Амжилттай</h5>
-      </div>
-      <div class="modal-body text-center">
-        {{ $success_message ?? '' }}
-      </div>
-      <div class="modal-footer">
-        <a href="/" class="btn btn-primary">Ойлголоо</a>
+    <div class="modal-content border-0 shadow-lg">
+      {{-- Success Icon Header --}}
+      <div class="modal-body text-center p-5">
+        {{-- Success Icon with Animation --}}
+        <div class="mb-4">
+          <div class="avatar avatar-xxl avatar-circle bg-soft-success mx-auto">
+            <span class="avatar-initials">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-success">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        {{-- Title --}}
+     <h3 class="modal-title mb-3" id="successModalLabel">{{ __('auth.title') }}</h3>
+
+{{-- Message --}}
+<p class="text-muted mb-1">{{ __('auth.msg1') }}</p>
+<p class="text-muted mb-4">{{ __('auth.msg2') }}</p>
+
+{{-- Action Button --}}
+<a href="{{ url('/') }}" class="btn btn-primary btn-lg px-5">
+  <i class="bi bi-check-circle me-2"></i>{{ __('auth.button') }}
+</a>
+
       </div>
     </div>
   </div>
 </div>
 
-{{-- Modal-г автоматаар харуулах JS --}}
-@if(!empty($success_message))
+{{-- Modal Animation CSS --}}
+<style>
+#successModal .modal-content {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+#successModal .avatar-xxl {
+  width: 6rem;
+  height: 6rem;
+  animation: scaleIn 0.5s ease-out;
+}
+
+#successModal .bg-soft-success {
+  background-color: rgba(0, 201, 167, 0.1);
+}
+
+#successModal .avatar-circle {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#successModal .modal-title {
+  font-weight: 600;
+  color: #1e2022;
+  font-size: 1.5rem;
+}
+
+#successModal .btn-primary {
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+#successModal .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(55, 125, 255, 0.4);
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Modal backdrop blur effect */
+#successModal.show ~ .modal-backdrop {
+  backdrop-filter: blur(5px);
+}
+
+/* Fade in animation for content */
+#successModal .modal-body > * {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+#successModal .modal-body > *:nth-child(1) { animation-delay: 0.1s; }
+#successModal .modal-body > *:nth-child(2) { animation-delay: 0.2s; }
+#successModal .modal-body > *:nth-child(3) { animation-delay: 0.3s; }
+#successModal .modal-body > *:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+
+{{-- Modal JavaScript --}}
+@if(session('success_message'))
 <script>
-    window.addEventListener('DOMContentLoaded', function () {
-        var successModal = new bootstrap.Modal(document.getElementById('successModal'));
-        successModal.show();
+    window.addEventListener('load', function () {
+        var modalElement = document.getElementById('successModal');
+        if (modalElement) {
+            var successModal = new bootstrap.Modal(modalElement, {
+                backdrop: 'static',
+                keyboard: false
+            });
+            successModal.show();
+
+            // Modal хаагдахад нүүр хуудас руу шилжүүлэх
+            modalElement.addEventListener('hidden.bs.modal', function () {
+                window.location.href = '{{ url("/") }}';
+            });
+        }
     });
 </script>
 @endif
@@ -118,21 +229,12 @@
                   </select>
               </div>
               <div class="mb-3 col-lg-12 col-md-12">
-                <label for="hz" class="form-label">@lang('register.protected_area')</label>
-                <select name="hz" id="hz" class="form-select" required>
+                <label for="protected_area_id" class="form-label">@lang('register.protected_area')</label>
+                <select name="protected_area_id" id="protected_area_id" class="form-select" required>
                     <option value="" disabled selected>@lang('register.select_protected_area')</option>
-                    <option value="1">@lang('register.tarvagatai_nuru')</option>
-                    <option value="2">@lang('register.orkhon_khondii')</option>
-                    <option value="3">@lang('register.munkhkhairkhan')</option>
-                    <option value="4">@lang('register.ikh_bogd_uul')</option>
-                    <option value="5">@lang('register.myangan_ugalzat')</option>
-                    <option value="6">@lang('register.nomrog')</option>
-                    <option value="7">@lang('register.khar_us_nuur')</option>
-                    <option value="8">@lang('register.achit_nuur')</option>
-                    <option value="9">@lang('register.otgontenger')</option>
-                    <option value="10">@lang('register.bogdkhan_uul')</option>
-                    <option value="11">@lang('register.ulaan_taiga')</option>
-                    <option value="12">@lang('register.dornod_mongol')</option>
+                    @foreach($protected_areas as $area)
+                        <option value="{{ $area->id }}">{{ $area->name }}</option>
+                    @endforeach
                 </select>
             </div>
               {{-- НУУЦ ҮГ --}}

@@ -42,7 +42,7 @@ Route::get('/posts', [NewsController::class, 'index'])->name('news.index');
 Route::get('/post/{id}', [NewsController::class, 'view']);
 
 Route::get('/spa', [PlaceController::class, 'index'])->name('place.index');
-Route::get('/spa/{id}', [PlaceController::class, 'view'])->name('place.view');
+Route::get('/spa/{slug}', [PlaceController::class, 'view'])->name('place.view');
 Route::get('/programs/{id}/register', [ProgramController::class, 'showRegistrationForm'])->name('program.register.form');
 Route::post('/programs/{id}/register', [ProgramController::class, 'submitRegistration'])->name('programs.register');
 
@@ -54,7 +54,7 @@ Route::get('/faq', [PageController::class, 'faq']);
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
-    Route::get('/requests', [CustomPageController::class, 'index'])->name('admin.custom.page');
+
 
     // Customer Verification Update Route
     Route::get('customers/verify/{id}/{status}', [CustomPageController::class, 'updateVerifyStatus'])
@@ -83,17 +83,25 @@ Route::get('/customer/lessons/{id}', [CustomerLessoncontroller::class, 'view'])-
   // Voyager routes should be inside this group
   Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
-    Route::get('stamp-add', [StampAddController::class, 'index'])->name('stamp_add.index');
-    Route::get('stamp-add/create', [StampAddController::class, 'create'])->name('stamp_add.create');
-    Route::post('stamp-add', [StampAddController::class, 'store'])->name('stamp_add.store');
-    Route::get('stamp-add/{customer_id}/{stamp_id}/edit', [StampAddController::class, 'edit'])->name('stamp_add.edit');
-    Route::put('stamp-add/{customer_id}/{stamp_id}', [StampAddController::class, 'update'])->name('stamp_add.update');
-    Route::delete('stamp-add/{customer_id}/{stamp_id}', [StampAddController::class, 'destroy'])->name('stamp_add.destroy');
- // Notification list page
-    Route::get('notifications', [NotificationController::class, 'index'])
+
+    Route::get('/requests', [CustomPageController::class, 'index'])->name('admin.custom.page');
+  });
+    Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/notifications', [NotificationController::class, 'index'])
         ->name('voyager.notifications.index');
 
-    // AJAX route: notification уншсан гэж тэмдэглэх
-    Route::post('notifications/read', [NotificationController::class, 'markAsRead'])
+    Route::post('/admin/notifications/read', [NotificationController::class, 'markAsRead'])
         ->name('notifications.read');
+
+});
+
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::resource('stamp-add', StampAddController::class)->names([
+        'index' => 'stamp_add.index',
+        'create' => 'stamp_add.create',
+        'store' => 'stamp_add.store',
+        'edit' => 'stamp_add.edit',
+        'update' => 'stamp_add.update',
+        'destroy' => 'stamp_add.destroy',
+    ]);
 });

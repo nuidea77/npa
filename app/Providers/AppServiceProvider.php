@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
+use App\Models\Program;
 
 
 
@@ -27,6 +28,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+         // layout.header-д programs дамжуулах
+    View::composer('layout.header', function ($view) {
+        $programs = Program::with('translations')
+            ->where('is_active', 1)
+            ->orderBy('order', 'asc')
+            ->get();
+        $view->with('programs', $programs);
+    });
+
+    // customer.layout.header-д programs дамжуулах
+    View::composer('customer.layout.header', function ($view) {
+        $programs = Program::with('translations')
+            ->where('is_active', 1)
+            ->orderBy('order', 'asc')
+            ->get();
+        $view->with('programs', $programs);
+    });
         Paginator::useBootstrap();
         View::composer('*', function ($view) {
         if (Auth::check()) {

@@ -1,3 +1,23 @@
+@section('meta')
+<title>National Park Academy | Explore Nature & Learning</title>
+  <meta name="description" content="Discover the wonders of nature and education at National Park Academy. Explore programs, courses, and conservation efforts.">
+  <meta name="keywords" content="National Park, Academy, Education, Conservation, Wildlife, Nature">
+  <meta name="author" content="National Park Academy">
+  <link rel="canonical" href="{{ url()->current() }}">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="National Park Academy | Explore Nature & Learning">
+  <meta property="og:description" content="Discover the wonders of nature and education at National Park Academy. Explore programs, courses, and conservation efforts.">
+  <meta property="og:image" content="{{ asset('assets/images/cover.jpg') }}">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="National Park Academy | Explore Nature & Learning">
+  <meta name="twitter:description" content="Discover the wonders of nature and education at National Park Academy. Explore programs, courses, and conservation efforts.">
+  <meta name="twitter:image" content="{{ asset('assets/images/cover.jpg') }}">
+@endsection
 <div class="swiper carouselSwiper">
     <div class="swiper-wrapper">
         @if (isset($slider))
@@ -35,7 +55,7 @@
 
               </div>
             </div>
-            <div class="col-md-2" style="justify-items: center;">
+            <div class="col-md-2" style="text-align: center;">
               <div class="vr "></div>
               <div>
                 <span class="text-uppercase " style="font-size: smaller;">@lang('texts.or')</span>

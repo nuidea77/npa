@@ -1,7 +1,7 @@
 @extends('layout.main')
 
 @section('meta')
-    <title>{{ $program->getTranslated('title') }} | {{ config('app.name') }}</title>
+    <title>{{ $program->getTranslated('title') }} | National Park Academy </title>
     <meta name="description" content="{{ Str::limit(strip_tags($program->getTranslated('excerpt')), 160) }}">
     <link rel="canonical" href="{{ url()->current() }}">
 
