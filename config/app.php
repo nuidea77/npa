@@ -15,6 +15,7 @@ return [
     |
     */
 
+
     'name' => env('APP_NAME', 'NPA'),
 
     /*
@@ -69,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Ulaanbaatar',
 
     /*
     |--------------------------------------------------------------------------
@@ -81,9 +82,9 @@ return [
     | to any of the locales which will be supported by the application.
     |
     */
-'locale' => env('APP_LOCALE', 'en'),
-'fallback_locale' => 'mn',
-
+  'available_locales' => ['mn', 'en'],
+    'locale' => env('APP_LOCALE', 'mn'),
+    'fallback_locale' => 'en',
 
 
 
