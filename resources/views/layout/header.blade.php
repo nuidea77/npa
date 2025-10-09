@@ -170,6 +170,26 @@
         font-size: 0.875rem;
     }
 }
+.dropdown-menu-custom {
+    border: none;
+    border-radius: 12px;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    animation: fadeInDown 0.3s ease-in-out;
+}
+
+.dropdown-menu-custom .dropdown-item {
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+    color: #333;
+    font-weight: 500;
+}
+
+.dropdown-menu-custom .dropdown-item:hover {
+    color: white;
+    transform: translateX(5px);
+    padding-left: 2rem;
+}
 </style>
 
 <script>

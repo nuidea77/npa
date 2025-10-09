@@ -23,8 +23,8 @@
 @endsection
 
 @section('content')
-<section>
-    <div class="container max-width-1920">
+<section class="max-width-1920">
+    <div class="container ">
         <div class="row py-5">
             <div class="col-lg-12">
                 <a href="{{ url()->previous() ?? route('home') }}" class="float-start program-date text-decoration-none">
